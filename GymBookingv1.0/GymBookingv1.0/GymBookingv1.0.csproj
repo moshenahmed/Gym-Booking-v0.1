@@ -264,6 +264,8 @@
     <Content Include="Views\GymClasses\Create.cshtml" />
     <Content Include="Views\GymClasses\Index.cshtml" />
     <Content Include="Views\GymClasses\Delete.cshtml" />
+    <Content Include="Views\GymClasses\Details.cshtml" />
+    <Content Include="Views\GymClasses\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
