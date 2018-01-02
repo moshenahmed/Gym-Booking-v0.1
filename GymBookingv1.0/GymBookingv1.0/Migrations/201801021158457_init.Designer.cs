@@ -13,7 +13,7 @@ namespace GymBookingv1._0.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712310746218_init"; }
+            get { return "201801021158457_init"; }
         }
         
         string IMigrationMetadata.Source
