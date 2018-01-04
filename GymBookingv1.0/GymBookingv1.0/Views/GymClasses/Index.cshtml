@@ -2,10 +2,10 @@
 @if (User.Identity.IsAuthenticated)
 {
 	{
-		ViewBag.Title = "Index";
+		ViewBag.Title = "Gym Classes";
 	}
 
-	<h2>Index</h2>
+	<h2>Gym Classes</h2>
 
 	<p>
 		@Html.ActionLink("Create New", "Create")
@@ -21,6 +21,9 @@
 			<th>
 				@Html.DisplayNameFor(model => model.Duration)
 			</th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
 			<th>
 				@Html.DisplayNameFor(model => model.Description)
 			</th>
@@ -39,9 +42,13 @@
 				<td>
 					@Html.DisplayFor(modelItem => item.Duration)
 				</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
 				<td>
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
+               
 				<td>
 					@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
 					@Html.ActionLink("Details", "Details", new { id = item.Id }) |

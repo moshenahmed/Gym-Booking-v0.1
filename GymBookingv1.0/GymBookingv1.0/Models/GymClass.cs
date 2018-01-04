@@ -6,16 +6,18 @@ using System.Web;
 
 namespace GymBookingv1._0.Models
 {
-    public class GymClasses
+    public class GymClass
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
         [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime StartTime { get; set; }
-        [Required]
-        [DataType(DataType.Duration)]
+       
+        
         public TimeSpan Duration { get; set; }
+      
         public DateTime EndTime { get { return StartTime + Duration; } }
         public string Description { get; set; }
         public virtual ICollection<ApplicationUser> AttendingMembers { get; set; }

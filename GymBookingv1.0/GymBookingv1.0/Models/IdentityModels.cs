@@ -17,20 +17,24 @@ namespace GymBookingv1._0.Models
             // Add custom user claims here
             return userIdentity;
         }
-        public virtual ICollection<GymClasses> AttendedClasses { get; set; }
+        public virtual ICollection<GymClass> AttendedClasses { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<GymClass> GymClasses { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet<GymClasses> GymClasses { get; set; }
+       
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+     
     }
 }

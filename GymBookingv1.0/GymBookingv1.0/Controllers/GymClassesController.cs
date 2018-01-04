@@ -28,6 +28,7 @@ namespace GymBookingv1._0.Controllers
             else
             {
                 CurrentClass.AttendingMembers.Add(CurrentUser);
+                return RedirectToAction();
             }
 
             return RedirectToAction("Index");
@@ -35,7 +36,7 @@ namespace GymBookingv1._0.Controllers
         
         public ActionResult Index()
         {
-            return View(db.GymClasses.ToList());
+            return View(db.GymClasses);
         }
 
         // GET: GymClasses/Details/5
@@ -46,7 +47,7 @@ namespace GymBookingv1._0.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GymClasses gymClass = db.GymClasses.Find(id);
+            GymClass gymClass = db.GymClasses.Find(id);
             if (gymClass == null)
             {
                 return HttpNotFound();
@@ -66,17 +67,17 @@ namespace GymBookingv1._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,StartTime,Duration,Description")] GymClasses gymClass)
+        public ActionResult Create([Bind(Include = "Id,Name,StartTime,Duration,Description")] GymClass gymClass)
         {
             if (ModelState.IsValid)
             {
                 db.GymClasses.Add(gymClass);
                 db.SaveChanges();
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index");
                 
             }
 
-            return View(db.GymClasses.ToList());
+            return View(db.GymClasses);
         }
 
         // GET: GymClasses/Edit/5
@@ -87,7 +88,7 @@ namespace GymBookingv1._0.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GymClasses gymClass = db.GymClasses.Find(id);
+            GymClass gymClass = db.GymClasses.Find(id);
             if (gymClass == null)
             {
                 return HttpNotFound();
@@ -100,7 +101,7 @@ namespace GymBookingv1._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,StartTime,Duration,Description")] GymClasses gymClass)
+        public ActionResult Edit([Bind(Include = "Id,Name,StartTime,Duration,Description")] GymClass gymClass)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +120,7 @@ namespace GymBookingv1._0.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GymClasses gymClass = db.GymClasses.Find(id);
+            GymClass gymClass = db.GymClasses.Find(id);
             if (gymClass == null)
             {
                 return HttpNotFound();
@@ -132,7 +133,7 @@ namespace GymBookingv1._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GymClasses gymClass = db.GymClasses.Find(id);
+            GymClass gymClass = db.GymClasses.Find(id);
             db.GymClasses.Remove(gymClass);
             db.SaveChanges();
             return RedirectToAction("Index");
